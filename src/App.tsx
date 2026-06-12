@@ -4,6 +4,7 @@ import { useState } from "react";
 import { EmotionalTransition } from "./components/EmotionalTransition";
 import { FinalSection } from "./components/FinalSection";
 import { FunnyQuestion } from "./components/FunnyQuestion";
+import { IntroVideoModal } from "./components/IntroVideoModal";
 import { LoveLetter } from "./components/LoveLetter";
 import { MemeSection } from "./components/MemeSection";
 import { MusicPlayer } from "./components/MusicPlayer";
@@ -18,6 +19,7 @@ import { useAudioManager } from "./hooks/useAudioManager";
 
 export default function App() {
   const [started, setStarted] = useState(false);
+  const [showIntroVideo, setShowIntroVideo] = useState(false);
   const [secretMessage, setSecretMessage] = useState<string | null>(null);
   const [heartTaps, setHeartTaps] = useState(0);
   const [decorativePaused, setDecorativePaused] = useState(false);
@@ -37,6 +39,11 @@ export default function App() {
   }
 
   function startExperience() {
+    setShowIntroVideo(true);
+  }
+
+  function continueAfterIntroVideo() {
+    setShowIntroVideo(false);
     setStarted(true);
     window.setTimeout(() => scrollTo("surpresa"), 120);
   }
@@ -55,6 +62,9 @@ export default function App() {
         decorativePaused={decorativePaused}
         onSecretHeart={showHeartSecret}
       />
+      <AnimatePresence>
+        {showIntroVideo && <IntroVideoModal onClose={continueAfterIntroVideo} />}
+      </AnimatePresence>
       {started && (
         <>
           <FunnyQuestion onContinue={() => scrollTo("memes")} />

@@ -16,6 +16,14 @@ export const coupleData = {
     no: "Estou com vergonha disso 😂",
     finalNo: "Tá bom, pode mostrar 😂"
   },
+  introVideo: {
+    video: "/videos/meme.mp4",
+    title: "Antes de abrir a surpresa...",
+    subtitle: "Dá play nesse vídeo rapidinho 😂",
+    play: "Dar play",
+    continue: "Continuar para a surpresa",
+    skip: "Pular vídeo"
+  },
   memesIntro: {
     title: "Primeiro, vamos ao que realmente importa...",
     subtitle: "Os memes que fazem parte da nossa história.",
